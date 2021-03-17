@@ -1,6 +1,30 @@
 body {
-  background-color: #000;
-  color: white;
+  background-color: #222;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.hero {
+  padding: 4rem 9rem;
+}
+.hero h1 {
+  color: #c19f54;
+  font-size: 4rem;
+}
+
+.projects-list-container {
+  border: 1px solid #222;
+  background-color: white;
+  margin: 0 9rem;
+}
+.projects-list-container ul {
+  padding-left: 0;
+}
+.projects-list-container ul li {
+  list-style-type: none;
+}
+.projects-list-container ul li .project {
+  border-bottom: 1px solid #222;
+  padding: 1rem 0.5rem;
 }
 
 /*# sourceMappingURL=main.css.map */

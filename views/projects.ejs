@@ -1,0 +1,13 @@
+<%- include ('partials/header') %>	
+	<div class="projects-list-container">
+		<ul>
+			<% projects.map(a => { %>
+				<li>
+					<div class="project">
+						<%= a.id %>
+					</div>
+				</li>
+			<% }); %>
+		</ul>
+	</div>
+<%- include ('partials/footer') %>
