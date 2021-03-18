@@ -3,18 +3,20 @@
 		<ul>
 			<% projects.map(({id, name, summary, owner_id}, index) => { %>
 				<li>
-					<div class="project shift-box">
-						<div class="left-top">
-							<h3><%= name %></h3>
-							<small>ID: <%= id %></small>
-							<small>Owner ID: <%= owner_id %></small>
+					<a href="/detail/id/<%= id %>">
+						<div class="project shift-box">
+							<div class="left-top">
+								<h3><%= name %></h3>
+								<small>ID: <%= id %></small>
+								<small>Owner ID: <%= owner_id %></small>
+							</div>
+							<div class="right-bottom">
+								<p class="description">
+									<%= truncatedDescriptions[index] %>
+								</p>
+							</div>
 						</div>
-						<div class="right-bottom">
-							<p class="description">
-								<%= truncatedDescriptions[index] %>
-							</p>
-						</div>
-					</div>
+					</a>
 				</li>
 			<% }); %>
 		</ul>
@@ -22,15 +24,18 @@
 	<div class="pagination">
 		<% if(page > 1){ %>
 			<a href="/projects/page/<%= page - 1 %>">&lt;</a>
+			<a class="desktop-only" href="/projects/page/1">1</a>
+			<span class="desktop-only">...</span>
 		<% } %>
 
-		<% Array.from({length: 3}, (_, i) => parseInt(page) + (i + 1)).map(a => { %>
-			<a class="desktop-only" href="/projects/page/<%= a %>"><%= a %></a>
-		<% }); %>
-
-		<span class="desktop-only">...</span>
+		<% if(page + 3 <= lastPage ) { %>
+			<% Array.from({length: 3}, (_, i) => page + (i + 1)).map(a => { %>
+				<a class="desktop-only" href="/projects/page/<%= a %>"><%= a %></a>
+			<% }); %>
+		<% } %>
 
 		<% if(page != lastPage){ %>
+			<span class="desktop-only">...</span>
 			<a class="desktop-only" href="/projects/page/<%= lastPage %>"><%= lastPage %></a>
 			<a href="/projects/page/<%=page + 1%>">&gt;</a>
 		<% } %>

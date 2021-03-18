@@ -64,14 +64,14 @@ app.get('/projects/page/:page', async (req, res) => {
     { 
       projects, 
       truncatedDescriptions,
-      page,
-      lastPage
+      page: parseInt(page),
+      lastPage: parseInt(lastPage)
     }
   )
 })
 
-app.get('/detail', (req, res) => {
-  res.send("Detail")
+app.get('/detail/id/:id', (req, res) => {
+  res.send(`id: ${req.params.id}`)
 })
 
 app.listen(port, () => {

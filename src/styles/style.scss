@@ -28,10 +28,13 @@ body {
 		li {
 			list-style-type: none;
 
-			.project {
-				background-color: $mid;
-				border-bottom: 1px solid $black;
-				padding: 1rem 0.5rem;
+			a {
+				text-decoration: none;
+				.project {
+					background-color: $mid;
+					border-bottom: 1px solid $black;
+					padding: 1rem 0.5rem;
+				}
 			}
 		}
 	}
