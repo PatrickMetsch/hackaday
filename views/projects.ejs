@@ -1,16 +1,38 @@
 <%- include ('partials/header') %>	
 	<div class="projects-list-container">
 		<ul>
-			<% projects.map(({id, name}) => { %>
+			<% projects.map(({id, name, summary, owner_id}, index) => { %>
 				<li>
 					<div class="project shift-box">
 						<div class="left-top">
 							<h3><%= name %></h3>
 							<small>ID: <%= id %></small>
+							<small>Owner ID: <%= owner_id %></small>
+						</div>
+						<div class="right-bottom">
+							<p class="description">
+								<%= truncatedDescriptions[index] %>
+							</p>
 						</div>
 					</div>
 				</li>
 			<% }); %>
 		</ul>
+	</div>
+	<div class="pagination">
+		<% if(page > 1){ %>
+			<a href="/projects/page/<%= page - 1 %>">&lt;</a>
+		<% } %>
+
+		<% Array.from({length: 3}, (_, i) => parseInt(page) + (i + 1)).map(a => { %>
+			<a class="desktop-only" href="/projects/page/<%= a %>"><%= a %></a>
+		<% }); %>
+
+		<span class="desktop-only">...</span>
+
+		<% if(page != lastPage){ %>
+			<a class="desktop-only" href="/projects/page/<%= lastPage %>"><%= lastPage %></a>
+			<a href="/projects/page/<%=page + 1%>">&gt;</a>
+		<% } %>
 	</div>
 <%- include ('partials/footer') %>

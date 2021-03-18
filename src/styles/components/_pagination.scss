@@ -1,0 +1,22 @@
+.pagination {
+	margin: 2rem 0;
+	text-align: center;
+	
+	a,
+	span {
+		margin: .5rem
+	}
+
+	a {
+		padding: .5rem 1rem;
+		color: black;
+		background-color: $highlight;
+		border-radius: 3px;
+		text-decoration: none;
+	}
+
+	span {
+		font-weight: bold;
+		color: white;
+	}
+}

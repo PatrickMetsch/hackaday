@@ -5,9 +5,9 @@ const port = 3000
 const fetch = require('node-fetch')
 const { authorizationUrl } = require('./src/api/authorizationUrl')
 const { obtainAccessTokenUrl } = require('./src/api/obtainAccessTokenUrl')
-const { apiKey } = require('./src/api/apiKey')
 const jsonpath = require('jsonpath')
 const { allProjectsSortedByDate } = require("./src/api/allProjectsRequestUrl")
+const { truncatedStringsList } = require("./src/utils/arrays/truncatedStringsList")
 
 app.use('/public', express.static('public'))
 
@@ -52,9 +52,22 @@ app.get('/projects/page/:page', async (req, res) => {
       }
     }).then(response => response.text())
 
-  const projects = jsonpath.query(JSON.parse(response), '$.projects.*')
+  const parsedResponse = JSON.parse(response)
+  const projects = jsonpath.query(parsedResponse, '$.projects.*')
+  const lastPage = jsonpath.query(parsedResponse, '$.last_page')[0]
 
-  res.render("projects.ejs", { projects })
+  const truncatedDescriptions = 
+    truncatedStringsList(projects.map(a => a.description || "No Description Available"))(120)
+
+  res.render(
+    "projects.ejs", 
+    { 
+      projects, 
+      truncatedDescriptions,
+      page,
+      lastPage
+    }
+  )
 })
 
 app.get('/detail', (req, res) => {

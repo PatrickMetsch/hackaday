@@ -1,10 +1,17 @@
 .shift-box {
 	display: flex;
 	flex-direction: row;
+	flex-wrap: wrap;
 
 	.right-bottom,
 	.left-top {
 		flex: 0 0 50%;
+		box-sizing: border-box;
+		padding: 2rem;
+
+		.description {
+			color: $light;
+		}
 
 		h3 {
 			color: $highlight;
@@ -12,6 +19,7 @@
 		}
 
 		small {
+			display: block;
 			color: $light;
 			font-style: italic;
 		}
@@ -31,7 +39,6 @@
 
 		.left-top {
 			border-right: none;
-			border-bottom: 1px solid $black;
 		}
 	}
 }

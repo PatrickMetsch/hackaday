@@ -6,7 +6,7 @@
   "scripts": {
     "start": "concurrently \"npm run node:watch\" \"npm run sass:watch\"",
     "node:watch": "nodemon index.js",
-    "sass:watch": "sass --watch src/styles/* public/main.css",
+    "sass:watch": "sass --watch src/styles/style.scss public/main.css",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

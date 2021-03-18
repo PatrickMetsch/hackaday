@@ -1,5 +1,6 @@
-@import "./variables";
+@import "./components/variables";
 @import "./components/shift-box";
+@import "./components/pagination";
 
 body {
 	background-color: $dark;
@@ -37,6 +38,9 @@ body {
 }
 
 @media (max-width: $maxTabletScreenWidth) {
+	.desktop-only {
+		display: none;
+	}
 	.hero {
 		padding-right: 4rem;
 		padding-left: 4rem;
