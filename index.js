@@ -1,13 +1,14 @@
 const express = require('express')
 const session = require('express-session')
-const app = express()
-const port = 3000
 const fetch = require('node-fetch')
+const jsonpath = require('jsonpath')
 const { authorizationUrl } = require('./src/api/authorizationUrl')
 const { obtainAccessTokenUrl } = require('./src/api/obtainAccessTokenUrl')
-const jsonpath = require('jsonpath')
 const { allProjectsSortedByDate } = require("./src/api/allProjectsRequestUrl")
 const { truncatedStringsList } = require("./src/utils/arrays/truncatedStringsList")
+
+const app = express()
+const port = 3000
 
 app.use('/public', express.static('public'))
 

@@ -7,7 +7,7 @@
     "start": "concurrently \"npm run node:watch\" \"npm run sass:watch\"",
     "node:watch": "nodemon index.js",
     "sass:watch": "sass --watch src/styles/style.scss public/main.css",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "nightwatch"
   },
   "repository": {
     "type": "git",
@@ -29,6 +29,7 @@
     "sass": "^1.32.8"
   },
   "devDependencies": {
+    "chromedriver": "^89.0.0",
     "concurrently": "^6.0.0",
     "jsonpath": "^1.1.0",
     "nodemon": "^2.0.7"
