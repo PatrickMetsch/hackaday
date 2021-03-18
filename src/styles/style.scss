@@ -1,10 +1,22 @@
 @import "./components/variables";
 @import "./components/shift-box";
 @import "./components/pagination";
+@import "./components//projectsList";
+@import "./components/projectDetail";
 
 body {
 	background-color: $dark;
 	font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+pre {
+	color: $light;
+}
+
+.container {
+	border: 1px solid $mid;
+	background-color: $black;
+	margin: 0 $xSpacing;
 }
 
 .hero {
@@ -16,34 +28,16 @@ body {
 	}
 }
 
-.projects-list-container {
-	border: 1px solid $mid;
-	background-color: $black;
-	margin: 0 9rem;
-
-	ul {
-		padding-left: 0;
-		margin: 1rem;
-
-		li {
-			list-style-type: none;
-
-			a {
-				text-decoration: none;
-				.project {
-					background-color: $mid;
-					border-bottom: 1px solid $black;
-					padding: 1rem 0.5rem;
-				}
-			}
-		}
-	}
-}
-
 @media (max-width: $maxTabletScreenWidth) {
 	.desktop-only {
 		display: none;
 	}
+
+	.container {
+		margin-right: $xSpacingTablet;
+		margin-left: $xSpacingTablet;
+	}
+
 	.hero {
 		padding-right: 4rem;
 		padding-left: 4rem;
@@ -53,24 +47,20 @@ body {
 			font-size: 3rem;
 		}
 	}
-	.projects-list-container {
-		margin-right: 4rem;
-		margin-left: 4rem;
-	}
-
 }
 
 @media (max-width: $maxMobileScreenWidth) {
-	.hero{
+	.container {
+		margin-right: $xSpacingMobile;
+		margin-left: $xSpacingMobile;
+	}
+
+	.hero {
 		padding-right: 1rem;
 		padding-left: 1rem;
 
 		h1 {
 			font-size: 2rem;
 		}
-	}
-	.projects-list-container {
-		margin-right: 1rem;
-		margin-left: 1rem;
 	}
 }

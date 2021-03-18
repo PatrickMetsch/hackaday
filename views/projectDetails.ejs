@@ -1,0 +1,32 @@
+<%- include ('partials/header') %>
+	<div class="container product-details">
+		<div class="header">
+			<h1><%= project.name %></h1>
+			<h2>Created By <%= owner.screen_name %> <span>(<%= owner.username %>)</span></h2>
+			<h3><%= owner.about_me %>, <%= owner.location %></h3>
+		</div>
+		<div class="details">
+			<p class="summary">
+				<%= project.summary %>
+			</p>
+			<p class="description">
+				<%= project.description %>
+			</p>
+		</div>
+		<div class="footer">
+			<div class="project shift-box">
+				<div class="left-top">
+					<% if(project.image_url === "" || project.image_url === undefined || project.image_url === null) { %>
+						<div class="image-not-found">
+							<p>Image Not Found</p>
+						</div>
+					<% } else { %>
+						<img src="<%= project.image_url %>" />
+					<% } %>
+				</div>
+				<div class="right-bottom"></div>
+			</div>
+			
+		</div>
+	</div>
+<%- include ('partials/footer') %>

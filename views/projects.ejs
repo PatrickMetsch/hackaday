@@ -1,16 +1,16 @@
-<%- include ('partials/header') %>	
-	<div class="projects-list-container">
+<%- include ('partials/header') %>
+	<div class="container projects-list">
 		<ul>
 			<% projects.map(({id, name, summary, owner_id}, index) => { %>
 				<li>
 					<a href="/detail/id/<%= id %>">
 						<div class="project shift-box">
-							<div class="left-top">
+							<div class="left-top padded">
 								<h3><%= name %></h3>
 								<small>ID: <%= id %></small>
 								<small>Owner ID: <%= owner_id %></small>
 							</div>
-							<div class="right-bottom">
+							<div class="right-bottom padded">
 								<p class="description">
 									<%= truncatedDescriptions[index] %>
 								</p>

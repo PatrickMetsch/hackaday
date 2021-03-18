@@ -13,6 +13,7 @@ describe('authentication', function() {
 		.assert.visible('button[type=submit]')
 		.click('button[type=submit]')
 		.waitForElementVisible('.hero', 3000)
+		.assert.titleContains('Patrick Metsch')
 	});
   
 	after(browser => browser.end());

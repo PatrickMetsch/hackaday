@@ -7,7 +7,10 @@
 	.left-top {
 		flex: 0 0 50%;
 		box-sizing: border-box;
-		padding: 2rem;
+
+		&.padded {
+			padding: 2rem;
+		}
 
 		.description {
 			color: $light;
