@@ -1,10 +1,13 @@
 <%- include ('partials/header') %>	
 	<div class="projects-list-container">
 		<ul>
-			<% projects.map(a => { %>
+			<% projects.map(({id, name}) => { %>
 				<li>
-					<div class="project">
-						<%= a.id %>
+					<div class="project shift-box">
+						<div class="left-top">
+							<h3><%= name %></h3>
+							<small>ID: <%= id %></small>
+						</div>
 					</div>
 				</li>
 			<% }); %>

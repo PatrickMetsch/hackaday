@@ -1,0 +1,41 @@
+.shift-box {
+	display: flex;
+	flex-direction: row;
+
+	.right-bottom,
+	.left-top {
+		flex: 0 0 50%;
+
+		h3 {
+			color: $highlight;
+			margin: .1rem 0;
+		}
+
+		small {
+			color: $light;
+			font-style: italic;
+		}
+	}
+
+	.left-top {
+		border-right: 1px solid $black;
+	}
+}
+
+@media (max-width: $maxTabletScreenWidth) {
+	.shift-box {
+		.right-bottom,
+		.left-top {
+			flex-basis: 100%;
+		}
+
+		.left-top {
+			border-right: none;
+			border-bottom: 1px solid $black;
+		}
+	}
+}
+
+@media (max-width: $maxMobileScreenWidth) {
+
+}

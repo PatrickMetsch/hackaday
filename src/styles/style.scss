@@ -1,5 +1,8 @@
+@import "./variables";
+@import "./components/shift-box";
+
 body {
-	background-color: #222;
+	background-color: $dark;
 	font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
@@ -7,26 +10,60 @@ body {
 	padding: 4rem 9rem;
 
 	h1 {
-		color: #c19f54;
+		color: $highlight;
 		font-size: 4rem;
 	}
 }
 
 .projects-list-container {
-	border: 1px solid #222;
-	background-color: white;
+	border: 1px solid $mid;
+	background-color: $black;
 	margin: 0 9rem;
 
 	ul {
 		padding-left: 0;
+		margin: 1rem;
 
 		li {
 			list-style-type: none;
 
 			.project {
-				border-bottom: 1px solid #222;
+				background-color: $mid;
+				border-bottom: 1px solid $black;
 				padding: 1rem 0.5rem;
 			}
 		}
+	}
+}
+
+@media (max-width: $maxTabletScreenWidth) {
+	.hero {
+		padding-right: 4rem;
+		padding-left: 4rem;
+
+		h1 {
+			text-align: center;
+			font-size: 3rem;
+		}
+	}
+	.projects-list-container {
+		margin-right: 4rem;
+		margin-left: 4rem;
+	}
+
+}
+
+@media (max-width: $maxMobileScreenWidth) {
+	.hero{
+		padding-right: 1rem;
+		padding-left: 1rem;
+
+		h1 {
+			font-size: 2rem;
+		}
+	}
+	.projects-list-container {
+		margin-right: 1rem;
+		margin-left: 1rem;
 	}
 }
