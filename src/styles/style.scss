@@ -4,14 +4,17 @@
 @import "./components//projectsList";
 @import "./components/projectDetail";
 @import "./components/button";
+@import "./components/tooltip";
+@import "./components/nav";
 
 body {
 	background-color: $dark;
 	font-family: Verdana, Geneva, Tahoma, sans-serif;
+	margin: 0;
 }
 
-pre {
-	color: $light;
+.hidden {
+	display: none;
 }
 
 .container {

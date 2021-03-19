@@ -72,6 +72,9 @@
   border-bottom: 1px solid #000;
   padding: 1rem 0.5rem;
 }
+.projects-list ul li a .project:hover {
+  background-color: #333;
+}
 
 .product-details {
   padding: 1rem;
@@ -147,9 +150,6 @@
 .product-details .footer .related-projects .primary-button {
   margin-bottom: 0.5rem;
 }
-.product-details .footer .related-projects .primary-button:hover {
-  background-color: #9c8148;
-}
 
 @media (max-width: 1024px) {
   .product-details .header,
@@ -175,14 +175,55 @@
   border-radius: 3px;
   text-decoration: none;
 }
+.primary-button:hover {
+  background-color: #9c8148;
+}
+
+.tooltip {
+  width: 200px;
+  padding: 1rem;
+  background-color: #E9E9E9;
+  position: absolute;
+  left: 200px;
+}
+.tooltip h4 {
+  color: #171717;
+}
+.tooltip p {
+  color: #222;
+}
+
+nav {
+  position: sticky;
+  top: 0;
+  background-color: #222;
+  padding: 2rem;
+  display: flex;
+  justify-content: space-between;
+}
+nav .brand-container h1 {
+  color: #E9E9E9;
+  margin: 0;
+}
+nav .nav-container a {
+  text-decoration: none;
+  color: #9c8148;
+  margin-left: 5rem;
+  font-size: 0.8rem;
+}
+nav .nav-container a.primary-link {
+  font-weight: bold;
+  font-size: 1rem;
+}
 
 body {
   background-color: #171717;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+  margin: 0;
 }
 
-pre {
-  color: #737373;
+.hidden {
+  display: none;
 }
 
 .container {

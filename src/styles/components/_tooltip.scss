@@ -1,0 +1,15 @@
+.tooltip {
+	width: 200px;
+	padding: 1rem;
+	background-color: $bright;
+	position: absolute;
+	left: 200px;
+	
+	h4 {
+		color: $dark;
+	}
+
+	p {
+		color: $mid;
+	}
+}

@@ -1,0 +1,29 @@
+nav {
+	position: sticky;
+	top: 0;
+	background-color: $mid;
+	padding: 2rem;
+	display: flex;
+	justify-content: space-between;
+
+	.brand-container {
+		h1 {
+			color: $bright;
+			margin: 0;
+		}
+	}
+
+	.nav-container {
+		a {
+			text-decoration: none;
+			color: $lowlight;
+			margin-left: 5rem;
+			font-size: .8rem;
+	
+			&.primary-link {
+				font-weight: bold;
+				font-size: 1rem;
+			}
+		}
+	}
+}

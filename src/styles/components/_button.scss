@@ -4,4 +4,8 @@
 	background-color: $highlight;
 	border-radius: 3px;
 	text-decoration: none;
+
+	&:hover {
+		background-color: $lowlight;
+	}
 }

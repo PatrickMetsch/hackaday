@@ -1,4 +1,13 @@
-<%- include ('partials/header') %>
+<%- include ('partials/header', { heroText: "All Projects" }) %>
+	<script type="text/javascript">
+		function showElement(elementId){
+			document.getElementById(elementId).classList.remove("hidden")
+		}
+
+		function hideElement(elementId){
+			document.getElementById(elementId).classList.add("hidden")
+		}
+	</script>
 	<div class="container projects-list">
 		<ul>
 			<% projects.map(({id, name, summary, owner_id}, index) => { %>
@@ -6,7 +15,15 @@
 					<a href="/detail/id/<%= id %>">
 						<div class="project shift-box">
 							<div class="left-top padded">
-								<h3><%= name %></h3>
+								<h3 
+									onmouseover='showElement("tooltip-<%= index %>")' 
+									onmouseout='hideElement("tooltip-<%= index %>")'>
+										<%= name %>
+								</h3>
+								<div id="tooltip-<%= index %>" class="tooltip hidden">
+									<h4><%= name %></h4>
+									<p>Owned by <%= owner_id %></p>
+								</div>
 								<small>ID: <%= id %></small>
 								<small>Owner ID: <%= owner_id %></small>
 							</div>

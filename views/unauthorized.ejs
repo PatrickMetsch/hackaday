@@ -1,7 +1,7 @@
-<%- include ('partials/header') %>
+<%- include ('partials/header', { heroText: "Oops..." }) %>
 	<div class="container unauthorized">
 		<div class="card centered">
-			<h1 id="header">Oops... This Page Requires Authentication!</h1>
+			<h1 id="header">This Page Requires Authentication!</h1>
 			<h2>Click the Link Below to Log In!</h2>
 			<a id="login" class="primary-button" href=<%= authorizationUrl %>>Login</a>
 		</div>

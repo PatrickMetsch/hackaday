@@ -30,7 +30,7 @@ describe('unauthorized page access', function() {
 	test('test auth flow', function (browser) {
 	  browser
 		.waitForElementVisible('#login')
-		.assert.containsText('#header', 'Oops... This Page Requires Authentication!')
+		.assert.containsText('#header', 'This Page Requires Authentication!')
 		.assert.urlContains("/unauthorized")
 	});
   
