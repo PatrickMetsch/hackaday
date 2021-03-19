@@ -43,6 +43,7 @@ I was unable to figure out how to complete two of the bullet points outlined in 
 			- Update the URL to reflect that a non-loading page "navigation" had occurred
 			- Subsequently load the "next" and "previous" pages without hitting the server
 				- another issue resulting from my difficulty firing async callbacks to the server from the view
+	- I included what I have working, in regards to this deliverable, as a secondary "Experimental" pagination at the bottom of the `projects list` pages.
 
 
 
