@@ -5,9 +5,9 @@
 
   <testsuite name="unauthorizedAccess"
     errors="0" failures="0" hostname="" id="" package="unauthorizedAccess" skipped="0"
-    tests="1" time="0.03800" timestamp="">
+    tests="1" time="0.04000" timestamp="">
   
-    <testcase name="test auth flow" classname="unauthorizedAccess" time="0.03800" assertions="3">
+    <testcase name="destination url not reached" classname="unauthorizedAccess" time="0.04000" assertions="3">
 
     
 

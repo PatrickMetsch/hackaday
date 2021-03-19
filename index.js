@@ -19,9 +19,9 @@ app.use('/public', express.static('public'))
 app.use(
   session({
     cookie: { 
-      maxAge: 86400
+      maxAge: 3600000
     },
-    resave: false,
+    resave: true,
     saveUninitialized: false,
     secret: "4-8-15-16-23-42",
   })

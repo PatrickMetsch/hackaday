@@ -7,7 +7,7 @@
 	</div>
 	<div class="pagination">
 		<% if(page > 1){ %>
-			<a class="primary-button" href="/projects/page/<%= page - 1 %>">&lt;</a>
+			<a id="prev-page" class="primary-button" href="/projects/page/<%= page - 1 %>">&lt;</a>
 			<a class="primary-button desktop-only" href="/projects/page/1">1</a>
 			<span class="desktop-only">...</span>
 		<% } %>
@@ -21,7 +21,7 @@
 		<% if(page != lastPage){ %>
 			<span class="desktop-only">...</span>
 			<a class="primary-button desktop-only" href="/projects/page/<%= lastPage %>"><%= lastPage %></a>
-			<a class="primary-button" href="/projects/page/<%=page + 1%>">&gt;</a>
+			<a id="next-page" class="primary-button" href="/projects/page/<%=page + 1%>">&gt;</a>
 		<% } %>
 	</div>
 	<div class="experimental pagination">

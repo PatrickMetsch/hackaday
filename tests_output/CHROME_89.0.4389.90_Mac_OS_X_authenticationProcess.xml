@@ -5,9 +5,9 @@
 
   <testsuite name="authenticationProcess"
     errors="0" failures="0" hostname="" id="" package="authenticationProcess" skipped="0"
-    tests="1" time="3.880" timestamp="">
+    tests="1" time="6.288" timestamp="">
   
-    <testcase name="test auth flow" classname="authenticationProcess" time="3.880" assertions="10">
+    <testcase name="test auth flow" classname="authenticationProcess" time="6.288" assertions="10">
 
     
 
