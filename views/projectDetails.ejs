@@ -3,7 +3,7 @@
 		<div class="header">
 			<h1><%= project.name %></h1>
 			<h2>Created By <%= owner.screen_name %> <span>(<%= owner.username %>)</span></h2>
-			<h3><%= owner.about_me %>, <%= owner.location %></h3>
+			<h3><%= owner.about_me %> - <%= owner.location %></h3>
 		</div>
 		<div class="details">
 			<p class="summary">
@@ -15,7 +15,7 @@
 		</div>
 		<div class="footer">
 			<div class="project shift-box">
-				<div class="left-top">
+				<div class="left-top x-padded">
 					<% if(project.image_url === "" || project.image_url === undefined || project.image_url === null) { %>
 						<div class="image-not-found">
 							<p>Image Not Found</p>
@@ -24,7 +24,14 @@
 						<img src="<%= project.image_url %>" />
 					<% } %>
 				</div>
-				<div class="right-bottom"></div>
+				<div class="right-bottom x-padded">
+					<div class="related-projects">
+						<h3>Top <%= relatedProjects.length %> Related Projects</h3>
+						<% relatedProjects.map(({id, name}) => { %>
+							<a class="primary-button" href="/detail/id/<%= id %>"><%= name %></a>
+						<% }) %>
+					</div>
+				</div>
 			</div>
 			
 		</div>

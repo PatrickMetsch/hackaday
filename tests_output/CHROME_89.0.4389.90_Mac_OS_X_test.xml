@@ -5,17 +5,9 @@
 
   <testsuite name="test"
     errors="0" failures="0" hostname="" id="" package="test" skipped="0"
-    tests="1" time="4.029" timestamp="">
+    tests="1" time="0.04600" timestamp="">
   
-    <testcase name="test auth flow" classname="test" time="4.029" assertions="7">
-
-    
-
-    
-
-    
-
-    
+    <testcase name="test auth flow" classname="test" time="0.04600" assertions="3">
 
     
 

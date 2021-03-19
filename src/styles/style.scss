@@ -3,6 +3,7 @@
 @import "./components/pagination";
 @import "./components//projectsList";
 @import "./components/projectDetail";
+@import "./components/button";
 
 body {
 	background-color: $dark;
@@ -17,6 +18,24 @@ pre {
 	border: 1px solid $mid;
 	background-color: $black;
 	margin: 0 $xSpacing;
+
+	.card {
+		margin: 1rem;
+		padding: 2rem $xSpacing;
+		background-color: $mid;
+
+		h1 {
+			color: $highlight;
+		}
+
+		h2 {
+			color: $bright;
+		}
+
+		&.centered {
+			text-align: center;
+		}
+	}
 }
 
 .hero {

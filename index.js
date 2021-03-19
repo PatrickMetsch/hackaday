@@ -7,6 +7,7 @@ const { obtainAccessTokenUrl } = require('./src/api/obtainAccessTokenUrl')
 const { allProjectsSortedByDate } = require("./src/api/allProjectsRequestUrl")
 const { projectDetailByIdUrl } = require("./src/api/projectDetailByIdUrl")
 const { userByIdUrl } = require("./src/api/userByIdUrl")
+const { searchProjects } = require("./src/api/searchProjects")
 const { truncatedStringsList } = require("./src/utils/arrays/truncatedStringsList")
 
 const app = express()
@@ -27,11 +28,15 @@ app.use(
 
 app.get('/', async (req, res) => {
   if(!req.session.access_token){
-    res.redirect(authorizationUrl);
+    res.redirect("/unauthorized");
   }
   else {
     res.redirect("/projects/page/1")
   }
+})
+
+app.get('/unauthorized', async (req, res) => {
+  res.render("unauthorized.ejs", { authorizationUrl })
 })
 
 app.get('/auth', async (req, res) => {
@@ -45,38 +50,50 @@ app.get('/auth', async (req, res) => {
 })
 
 app.get('/projects/page/:page', async (req, res) => {
-  const page = req.params.page || 1;
+  if(!req.session.access_token){
+    res.redirect("/unauthorized");
+  }
+  else {
+    const page = req.params.page || 1;
 
-  const response = await fetch(allProjectsSortedByDate(page)(10), jsonGetOptions).then(response => response.json())
+    const response = await fetch(allProjectsSortedByDate(page)(10), jsonGetOptions).then(response => response.json())
 
-  const { projects, last_page } = response
+    const { projects, last_page } = response
 
-  const truncatedDescriptions = 
-    truncatedStringsList(projects.map(a => a.description || "No Description Available"))(120)
+    const truncatedDescriptions = 
+      truncatedStringsList(projects.map(a => a.description || "No Description Available"))(120)
 
-  res.render(
-    "projects.ejs", 
-    { 
-      projects, 
-      truncatedDescriptions,
-      page: parseInt(page),
-      lastPage: parseInt(last_page)
-    }
-  )
+    res.render(
+      "projects.ejs", 
+      { 
+        projects, 
+        truncatedDescriptions,
+        page: parseInt(page),
+        lastPage: parseInt(last_page)
+      }
+    )
+  }
 })
 
 app.get('/detail/id/:id', async (req, res) => {
-  const projectId = req.params.id;
-  const {owner_id, ...rest} = await fetch(projectDetailByIdUrl(projectId), jsonGetOptions).then(response => response.json())
-  const owner = await fetch(userByIdUrl(owner_id), jsonGetOptions).then(response => response.json())
+  if(!req.session.access_token){
+    res.redirect("/unauthorized");
+  }
+  else {
+    const projectId = req.params.id;
+    const {owner_id, tags, ...rest} = await fetch(projectDetailByIdUrl(projectId), jsonGetOptions).then(response => response.json())
+    const owner = await fetch(userByIdUrl(owner_id), jsonGetOptions).then(response => response.json())
+    const {projects:relatedProjects } = await fetch(searchProjects(tags[0]), jsonGetOptions).then(response => response.json())
 
-  res.render(
-    "projectDetails.ejs", 
-    { 
-      project: {owner_id, ...rest},
-      owner
-    }
-  )
+    res.render(
+      "projectDetails.ejs", 
+      { 
+        project: {owner_id, tags, ...rest},
+        owner,
+        relatedProjects
+      }
+    )
+  }
 })
 
 app.listen(port, () => {

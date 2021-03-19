@@ -12,6 +12,10 @@
 .shift-box .left-top.padded {
   padding: 2rem;
 }
+.shift-box .right-bottom.x-padded,
+.shift-box .left-top.x-padded {
+  padding: 0 2rem;
+}
 .shift-box .right-bottom .description,
 .shift-box .left-top .description {
   color: #737373;
@@ -47,13 +51,6 @@
 .pagination a,
 .pagination span {
   margin: 0.5rem;
-}
-.pagination a {
-  padding: 0.5rem 1rem;
-  color: black;
-  background-color: #c19f54;
-  border-radius: 3px;
-  text-decoration: none;
 }
 .pagination span {
   font-weight: bold;
@@ -138,6 +135,21 @@
   color: #737373;
   font-size: 1.5rem;
 }
+.product-details .footer .related-projects {
+  display: flex;
+  flex-direction: column;
+}
+.product-details .footer .related-projects h3 {
+  color: #E9E9E9;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+.product-details .footer .related-projects .primary-button {
+  margin-bottom: 0.5rem;
+}
+.product-details .footer .related-projects .primary-button:hover {
+  background-color: #9c8148;
+}
 
 @media (max-width: 1024px) {
   .product-details .header,
@@ -156,6 +168,14 @@
     padding: 3rem 1rem;
   }
 }
+.primary-button {
+  padding: 0.5rem 1rem;
+  color: black;
+  background-color: #c19f54;
+  border-radius: 3px;
+  text-decoration: none;
+}
+
 body {
   background-color: #171717;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -169,6 +189,20 @@ pre {
   border: 1px solid #222;
   background-color: #000;
   margin: 0 9rem;
+}
+.container .card {
+  margin: 1rem;
+  padding: 2rem 9rem;
+  background-color: #222;
+}
+.container .card h1 {
+  color: #c19f54;
+}
+.container .card h2 {
+  color: #E9E9E9;
+}
+.container .card.centered {
+  text-align: center;
 }
 
 .hero {
