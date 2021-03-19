@@ -1,0 +1,30 @@
+<script type="text/javascript">
+	function showElement(elementId){
+		document.getElementById(elementId).classList.remove("hidden")
+	}
+
+	function hideElement(elementId){
+		document.getElementById(elementId).classList.add("hidden")
+	}
+
+	function showPreviousPage(){
+		document.getElementById("previousPage").classList.remove("hidden")
+		document.getElementById("nextPage").classList.add("hidden")
+		document.getElementById("currentPage").classList.add("hidden")
+	}
+	
+	function showNextPage(){
+		document.getElementById("nextPage").classList.remove("hidden")
+		document.getElementById("previousPage").classList.add("hidden")
+		document.getElementById("currentPage").classList.add("hidden")
+	}
+
+	/*-- Part 2 of best attempt at loading owner data client side ---
+
+	async function getUserData(userId, apiKey, jsonGetOptions) {
+		const user = await fetch(`http://api.hackaday.io/v1/users/${userId}?api_key=${apiKey}`, jsonGetOptions).then(response => response.json())
+		console.log(JSON.stringify(user, null, 3))
+	}
+
+	----------------------------------------------------------------- */
+</script>

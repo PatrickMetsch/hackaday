@@ -11,4 +11,27 @@
 		font-weight: bold;
 		color: white;
 	}
+
+	&.experimental {
+		background-color: $mid;		
+		padding: 1rem;
+
+		p {
+			color: $bright;
+
+			&:not(.small) {
+				font-weight: bold;
+			}
+
+			&.small {
+				color: $light;
+				font-size: 0.8rem;
+				margin-bottom: 2rem;
+			}
+		}
+
+		a {
+			margin: 1rem inherit;
+		}
+	}
 }

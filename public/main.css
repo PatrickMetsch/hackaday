@@ -56,6 +56,24 @@
   font-weight: bold;
   color: white;
 }
+.pagination.experimental {
+  background-color: #222;
+  padding: 1rem;
+}
+.pagination.experimental p {
+  color: #E9E9E9;
+}
+.pagination.experimental p:not(.small) {
+  font-weight: bold;
+}
+.pagination.experimental p.small {
+  color: #737373;
+  font-size: 0.8rem;
+  margin-bottom: 2rem;
+}
+.pagination.experimental a {
+  margin: 1rem inherit;
+}
 
 .projects-list ul {
   padding-left: 0;

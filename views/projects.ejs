@@ -1,42 +1,9 @@
 <%- include ('partials/header', { heroText: "All Projects" }) %>
-	<script type="text/javascript">
-		function showElement(elementId){
-			document.getElementById(elementId).classList.remove("hidden")
-		}
-
-		function hideElement(elementId){
-			document.getElementById(elementId).classList.add("hidden")
-		}
-	</script>
+<%- include ('partials/viewModifiers') %>
 	<div class="container projects-list">
-		<ul>
-			<% projects.map(({id, name, summary, owner_id}, index) => { %>
-				<li>
-					<a href="/detail/id/<%= id %>">
-						<div class="project shift-box">
-							<div class="left-top padded">
-								<h3 
-									onmouseover='showElement("tooltip-<%= index %>")' 
-									onmouseout='hideElement("tooltip-<%= index %>")'>
-										<%= name %>
-								</h3>
-								<div id="tooltip-<%= index %>" class="tooltip hidden">
-									<h4><%= name %></h4>
-									<p>Owned by <%= owner_id %></p>
-								</div>
-								<small>ID: <%= id %></small>
-								<small>Owner ID: <%= owner_id %></small>
-							</div>
-							<div class="right-bottom padded">
-								<p class="description">
-									<%= truncatedDescriptions[index] %>
-								</p>
-							</div>
-						</div>
-					</a>
-				</li>
-			<% }); %>
-		</ul>
+		<%- include ('partials/possibleProjectsList', { possibleProjects: projects, truncatedDescriptions, defaultHidden: false, listId: "currentPage" }) %>
+		<%- include ('partials/possibleProjectsList', { possibleProjects: previousPageOfProjects, truncatedDescriptions, defaultHidden: true, listId: "previousPage" }) %>
+		<%- include ('partials/possibleProjectsList', { possibleProjects: nextPageOfProjects, truncatedDescriptions, defaultHidden: true, listId: "nextPage" }) %>
 	</div>
 	<div class="pagination">
 		<% if(page > 1){ %>
@@ -55,6 +22,16 @@
 			<span class="desktop-only">...</span>
 			<a class="primary-button desktop-only" href="/projects/page/<%= lastPage %>"><%= lastPage %></a>
 			<a class="primary-button" href="/projects/page/<%=page + 1%>">&gt;</a>
+		<% } %>
+	</div>
+	<div class="experimental pagination">
+		<p>Experimental "No Refresh" Pagination</p>
+		<p class="small">Works best on pages 2 through n-1</p>
+		<% if(page > 1){ %>
+			<a class="primary-button" onclick='showPreviousPage()'>PREV</a>
+		<% } %>
+		<% if(page != lastPage){ %>
+			<a class="primary-button" onclick='showNextPage()'>NEXT</a>
 		<% } %>
 	</div>
 <%- include ('partials/footer') %>

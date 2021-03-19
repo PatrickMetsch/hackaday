@@ -17,21 +17,7 @@ describe('authentication', function() {
 		.click('button[type=submit]')
 		.waitForElementVisible('.hero', 3000)
 		.assert.titleContains('Patrick Metsch')
-		.browser.assert.urlContains("/projects/page/")
-	});
-  
-	after(browser => browser.end());
-  });
-
-describe('unauthorized page access', function() {
-
-	before(browser => browser.url('http://localhost:3000/projects/page/1'));
-  
-	test('test auth flow', function (browser) {
-	  browser
-		.waitForElementVisible('#login')
-		.assert.containsText('#header', 'This Page Requires Authentication!')
-		.assert.urlContains("/unauthorized")
+		.assert.urlContains("/projects/page/")
 	});
   
 	after(browser => browser.end());

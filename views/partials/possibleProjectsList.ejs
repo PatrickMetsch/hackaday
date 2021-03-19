@@ -1,0 +1,29 @@
+<%- include ('viewModifiers') %>
+<ul class="<%- defaultHidden ? "hidden" : "" %>" id="<%- listId %>">
+	<% possibleProjects ? possibleProjects.map(({id, name, summary, owner_id}, index) => { %>
+		<li>
+			<a href="/detail/id/<%= id %>">
+				<div class="project shift-box">
+					<div class="left-top padded">
+						<h3 
+							onmouseover='showElement("tooltip-<%= index %>")'
+							onmouseout='hideElement("tooltip-<%= index %>")'>
+								<%= name %>
+						</h3>
+						<div id="tooltip-<%= index %>" class="tooltip hidden">
+							<h4><%= name %></h4>
+							<p>Owned by <%= owner_id %></p>
+						</div>
+						<small>ID: <%= id %></small>
+						<small>Owner ID: <%= owner_id %></small>
+					</div>
+					<div class="right-bottom padded">
+						<p class="description">
+							<%= truncatedDescriptions[index] %>
+						</p>
+					</div>
+				</div>
+			</a>
+		</li>
+	<% }) : "" %>
+</ul>
