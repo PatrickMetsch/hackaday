@@ -21,9 +21,6 @@ async function projectsListRouteHandler(req, res){
 		const { projects:previousPageOfProjects } = pageInt !== 1 ? await fetch(allProjectsSortedByDate(pageInt - 1)(10), jsonGetOptions).then(response => response.json()) : []
 		const { projects:nextPageOfProjects } = pageInt !== lastPageInt ? await fetch(allProjectsSortedByDate(pageInt + 1)(10), jsonGetOptions).then(response => response.json()) : []
 
-		// req.session.nextPage = nextPageOfProjects
-		// req.session.previousPage = previousPageOfProjects
-
 		const truncatedDescriptions = 
 			truncatedStringsList(projects.map(a => a.description || "No Description Available"))(120)
 
