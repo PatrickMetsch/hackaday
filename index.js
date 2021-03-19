@@ -1,14 +1,15 @@
 const express = require('express')
 const session = require('express-session')
-const fetch = require('node-fetch')
-const { authorizationUrl } = require('./src/api/authorizationUrl')
-const { jsonGetOptions } = require("./src/api/jsonGetOptions")
-const { obtainAccessTokenUrl } = require('./src/api/obtainAccessTokenUrl')
-const { allProjectsSortedByDate } = require("./src/api/allProjectsRequestUrl")
-const { projectDetailByIdUrl } = require("./src/api/projectDetailByIdUrl")
-const { userByIdUrl } = require("./src/api/userByIdUrl")
-const { searchProjects } = require("./src/api/searchProjects")
-const { truncatedStringsList } = require("./src/utils/arrays/truncatedStringsList")
+const { indexRoute } = require('./src/routing/index/indexRoute')
+const { unauthorizedRoute } = require('./src/routing/auth/unauthorizedRoute')
+const { authRoute } = require('./src/routing/auth/authRoute')
+const { projectsListRoute } = require('./src/routing/projects/projectsListRoute')
+const { projectDetailsRoute } = require('./src/routing/projects/projectDetailsRoute')
+const { indexRouteHandler } = require('./src/routing/index/indexRouteHandler')
+const { unauthorizedRouteHandler } = require('./src/routing/auth/unauthorizedRouteHandler')
+const { authRouteHandler } = require('./src/routing/auth/authRouteHandler')
+const { projectsListRouteHandler } = require('./src/routing/projects/projectsListRouteHandler')
+const { projectDetailsRouteHandler } = require('./src/routing/projects/projectDetailsRouteHandler')
 
 const app = express()
 const port = 3000
@@ -26,75 +27,11 @@ app.use(
   })
 )
 
-app.get('/', async (req, res) => {
-  if(!req.session.access_token){
-    res.redirect("/unauthorized");
-  }
-  else {
-    res.redirect("/projects/page/1")
-  }
-})
-
-app.get('/unauthorized', async (req, res) => {
-  res.render("unauthorized.ejs", { authorizationUrl })
-})
-
-app.get('/auth', async (req, res) => {
-  const code = req.query.code;
-  const text = await fetch(obtainAccessTokenUrl(code), jsonGetOptions).then(response => response.text())
-  const accessToken = JSON.parse(text).access_token;
-
-  req.session.access_token = `token ${accessToken}`;
-
-  res.redirect("/projects/page/1");
-})
-
-app.get('/projects/page/:page', async (req, res) => {
-  if(!req.session.access_token){
-    res.redirect("/unauthorized");
-  }
-  else {
-    const page = req.params.page || 1;
-
-    const response = await fetch(allProjectsSortedByDate(page)(10), jsonGetOptions).then(response => response.json())
-
-    const { projects, last_page } = response
-
-    const truncatedDescriptions = 
-      truncatedStringsList(projects.map(a => a.description || "No Description Available"))(120)
-
-    res.render(
-      "projects.ejs", 
-      { 
-        projects, 
-        truncatedDescriptions,
-        page: parseInt(page),
-        lastPage: parseInt(last_page)
-      }
-    )
-  }
-})
-
-app.get('/detail/id/:id', async (req, res) => {
-  if(!req.session.access_token){
-    res.redirect("/unauthorized");
-  }
-  else {
-    const projectId = req.params.id;
-    const {owner_id, tags, ...rest} = await fetch(projectDetailByIdUrl(projectId), jsonGetOptions).then(response => response.json())
-    const owner = await fetch(userByIdUrl(owner_id), jsonGetOptions).then(response => response.json())
-    const {projects:relatedProjects } = await fetch(searchProjects(tags[0]), jsonGetOptions).then(response => response.json())
-
-    res.render(
-      "projectDetails.ejs", 
-      { 
-        project: {owner_id, tags, ...rest},
-        owner,
-        relatedProjects
-      }
-    )
-  }
-})
+app.get(indexRoute, indexRouteHandler)
+app.get(unauthorizedRoute, unauthorizedRouteHandler)
+app.get(authRoute, authRouteHandler)
+app.get(projectsListRoute, projectsListRouteHandler)
+app.get(projectDetailsRoute, projectDetailsRouteHandler)
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
